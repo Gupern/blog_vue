@@ -1,6 +1,13 @@
 # blog_vue
 a blog by vue(frontend) and springboot(backend), this is the vue part
 
+# Todo
+
+- [ ] 创建列表页
+- [ ] 列表页js编写
+- [ ] 创建详情页
+- [ ] 详情页js编写
+
 
 # 命令一览
 
