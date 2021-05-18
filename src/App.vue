@@ -1,23 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <BlogClientList msg="Welcome to Your Vue.js App"/>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>
+      <img id="logo" alt="blog logo" src="./assets/logo.png" />
+      Welcome to Gupern's blog
+    </p>
+    <BlogClientList msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
 // 导入components
-import BlogClientList from './components/BlogClientList.vue'
-import HelloWorld from './components/HelloWorld.vue'
+import BlogClientList from "./components/BlogClientList.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld,
-    BlogClientList
-  }
-}
+    BlogClientList,
+  },
+};
 </script>
 
 <style>
@@ -25,8 +25,10 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+#logo {
+  margin-left: 10px;
+  width: auto;
+  height: 100px;
 }
 </style>

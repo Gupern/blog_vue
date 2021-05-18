@@ -12,10 +12,16 @@ a blog by vue(frontend) and springboot(backend), this is the vue part
 # 命令一览
 
 ### 安装vue cli
-`npm install -g @vue/cli @vue/cli-service-global` 
+`npm install -g vue-cli`
+
+### 使用淘宝镜像安装vue cli
+`npm install cnpm -g --registry=https://registry.npm.taobao.org`
 
 ### 创建vue项目
 `vue create hello-world`
+
+### 安装element ui
+`npm install element-ui@next`
 
 ## Project setup
 `npm install`
