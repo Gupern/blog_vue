@@ -4,25 +4,19 @@
       <img id="logo" alt="blog logo" src="./assets/logo.png" />
       Welcome to Gupern's blog
     </p>
-    <BlogClientList msg="Welcome to Your Vue.js App" />
+    <router-view/>
   </div>
 </template>
 
 <script>
-// 导入components
-import BlogClientList from "./components/BlogClientList.vue";
-
 export default {
-  name: "App",
-  components: {
-    BlogClientList,
-  },
-};
+  name: 'App'
+}
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

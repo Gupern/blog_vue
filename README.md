@@ -8,6 +8,8 @@ a blog by vue(frontend) and springboot(backend), this is the vue part
 - [ ] 创建详情页
 - [ ] 详情页js编写
 
+# 编程规约
+- 文件夹、文件名都用单数形式
 
 # 命令一览
 
@@ -20,8 +22,9 @@ a blog by vue(frontend) and springboot(backend), this is the vue part
 ### 创建vue项目
 `vue create hello-world`
 
-### 安装element ui
+### 安装插件
 `npm install element-ui@next`
+`npm -g install js-beautify` 
 
 ## Project setup
 `npm install`

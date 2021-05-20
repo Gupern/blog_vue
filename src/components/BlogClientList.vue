@@ -1,38 +1,49 @@
 <template>
   <div id="postList">
+    <p>this is in BlogClientList</p>
     <ul>
-      <li id="postItem" v-for="post in postList" :key="post">
-        <p>{{ post.title }} - {{ post.author }} - {{ post.publishedAt }}</p>
+      <li id="postItem" v-for="(post, index) in postList" :key="index">
+        <p style="float: left; margin-left: 1%">
+          {{ post.postTitle }}
+        </p>
+        <p style="float: right; margin-right: 1%">{{ post.postDate }}</p>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { getRequest } from '../util/api'
 export default {
-  name: "BlogClientList",
+  name: 'BlogClientList',
   props: {
-    msg: String, // String为App.vue里的HTML传进来的变量
+    msg: 'msg'
   },
-  data() {
+  data () {
     return {
-      postList: [
-        {
-          id: 0,
-          title: "How to do lists in Vue",
-          author: "Jane Doe",
-          publishedAt: "2016-04-10",
-        },
-        {
-          id: 1,
-          title: "Vue2",
-          author: "Doe",
-          publishedAt: "2016-04-11",
-        },
-      ],
-    };
+      postList: []
+    }
   },
-};
+  created () {
+    this.fetchData()
+  },
+  methods: {
+    fetchData () {
+      this.loading = true
+      let listUrl = '/client/list/1/2'
+      var _this = this
+      getRequest(listUrl).then((resp) => {
+        this.loading = false
+        if (resp.status === 200) {
+          _this.postList = resp.data
+          console.log(_this.postList)
+        } else {
+          alert('请求后台接口错误，请联系管理员')
+        }
+      })
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
