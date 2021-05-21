@@ -12,12 +12,12 @@
       </li>
       <!-- TODO 增加上一页、下一页的功能-->
     </ul>
-    <ul id="pageNumButton">
+    <ul id="button">
       <li>
-        <button v-if="this.pageNum > 1" @click="prePage()">上一页</button>
+        <p v-if="this.pageNum > 1" @click="prePage()">上一页</p>
       </li>
       <li>
-        <button @click="nextPage()">下一页</button>
+        <p @click="nextPage()">下一页</p>
       </li>
     </ul>
   </div>
@@ -72,7 +72,9 @@ export default {
     },
     // 跳转到详情页
     toPostDetail(postId) {
-      this.$router.push({ path: '/detail', params: { postId: postId } })
+      // name的方式，传params，地址栏不展示变量
+      // path的方式，传query，地址栏展示变量
+      this.$router.push({ name: 'BlogClientDetail', params: { postId: postId } })
     }
   }
 }
@@ -106,7 +108,8 @@ a {
   margin: 10px;
   border: solid 1px black;
 }
-#pageNumButton {
+#button {
   float: right;
+  margin-bottom: 30%;
 }
 </style>
