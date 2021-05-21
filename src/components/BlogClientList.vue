@@ -3,10 +3,21 @@
     <p>this is in BlogClientList</p>
     <ul>
       <li id="postItem" v-for="(post, index) in postList" :key="index">
-        <p style="float: left; margin-left: 1%">
-          {{ post.postTitle }}
-        </p>
-        <p style="float: right; margin-right: 1%">{{ post.postDate }}</p>
+        <div @click="toPostDetail(post.id)">
+          <p style="float: left; margin-left: 1%">
+            {{ post.postTitle }}
+          </p>
+          <p style="float: right; margin-right: 1%">{{ post.postDate }}</p>
+        </div>
+      </li>
+      <!-- TODO 增加上一页、下一页的功能-->
+    </ul>
+    <ul id="pageNumButton">
+      <li>
+        <button v-if="this.pageNum > 1" @click="prePage()">上一页</button>
+      </li>
+      <li>
+        <button @click="nextPage()">下一页</button>
       </li>
     </ul>
   </div>
@@ -19,20 +30,25 @@ export default {
   props: {
     msg: 'msg'
   },
-  data () {
+  data() {
     return {
-      postList: []
+      postList: [],
+      pageNum: 1,
+      pageSize: 5
     }
   },
-  created () {
-    this.fetchData()
+  created() {
+    // TODO 获取pageNum
+    this.fetchPostList(this.pageNum)
   },
   methods: {
-    fetchData () {
+    // 获取列表页数据
+    fetchPostList(pageNum) {
       this.loading = true
-      let listUrl = '/client/list/1/2'
+      // TODO size固定，页数随机变动
+      let listUrl = '/client/list/' + pageNum + '/' + this.pageSize
       var _this = this
-      getRequest(listUrl).then((resp) => {
+      getRequest(listUrl).then(resp => {
         this.loading = false
         if (resp.status === 200) {
           _this.postList = resp.data
@@ -41,6 +57,22 @@ export default {
           alert('请求后台接口错误，请联系管理员')
         }
       })
+    },
+    // 上一页数据
+    prePage() {
+      this.pageNum--
+      console.log(this.pageNum)
+      this.fetchPostList(this.pageNum)
+    },
+    // 下一页数据
+    nextPage() {
+      this.pageNum++
+      console.log(this.pageNum)
+      this.fetchPostList(this.pageNum)
+    },
+    // 跳转到详情页
+    toPostDetail(postId) {
+      this.$router.push({ path: '/detail', params: { postId: postId } })
     }
   }
 }
@@ -73,5 +105,8 @@ a {
   width: 100%;
   margin: 10px;
   border: solid 1px black;
+}
+#pageNumButton {
+  float: right;
 }
 </style>
