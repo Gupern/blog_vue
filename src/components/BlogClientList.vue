@@ -1,6 +1,5 @@
 <template>
   <div id="postList">
-    <p>this is in BlogClientList</p>
     <ul>
       <li id="postItem" v-for="(post, index) in postList" :key="index">
         <div @click="toPostDetail(post.id)">
