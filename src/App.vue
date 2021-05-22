@@ -1,32 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <BlogClientList msg="Welcome to Your Vue.js App"/>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>
+      <img id="logo" alt="blog logo" src="./assets/logo.png" />
+      Welcome to Gupern's blog
+    </p>
+    <router-view/>
   </div>
 </template>
 
 <script>
-// 导入components
-import BlogClientList from './components/BlogClientList.vue'
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-    BlogClientList
-  }
+  name: 'App'
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+#logo {
+  margin-left: 10px;
+  width: auto;
+  height: 100px;
 }
 </style>
